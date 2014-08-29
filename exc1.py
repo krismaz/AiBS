@@ -17,10 +17,11 @@ sequences = Fasta('exc1.fasta')
 seq1 = str(sequences['Seq1']).replace(' ','')
 seq2 = str(sequences['Seq2']).replace(' ','')
 
-seq1 = 'AATAAT'
-seq2 = 'AAGG'
+#seq1 = 'AATAAT'
+#seq2 = 'AAGG'
 
 D = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
+Dopt = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
 
 for i in range(1,len(seq1)+1):
 	D[i,0] = D[i-1,0] + gapcost
@@ -57,9 +58,32 @@ while i != 0 or j != 0:
 		lowerAlign = lowerAlign + '-'
 		i = i-1
 
+Dopt[0,0] = 1
+
+for i in range(1,len(seq1)+1):
+	Dopt[i,0] = 1
+
+for j in range(1,len(seq2)+1):
+	Dopt[0,j] = 1
+
+for i in range(1,len(seq1)+1):
+	for j in range(1,len(seq2)+1):
+		count = 0
+		a = seq1[i-1]
+		b = seq2[j-1]
+		if D[i,j] == D[i-1, j-1] + y(a, b):
+			count += Dopt[i-1, j-1]
+		if D[i, j] == D[i-1, j] + gapcost:
+			count += Dopt[i-1, j]
+		if D[i, j] == D[i, j-1] + gapcost:
+			count += Dopt[i, j-1]
+		Dopt[i, j] = count
+
+
 upperAlign = upperAlign[::-1]
 lowerAlign = lowerAlign[::-1]
 
 print("Cost " + str(D[len(seq1), len(seq2)]))
 print(upperAlign)
 print(lowerAlign)
+print(Dopt.T)
