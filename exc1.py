@@ -1,7 +1,11 @@
 #! /usr/bin/python3
 import sys
-from pyfaidx import Fasta
 import numpy
+from Bio import SeqIO
+
+
+fasta_sequences = SeqIO.to_dict(SeqIO.parse(open('exc1.fasta'),'fasta'))
+
 
 
 gapcost = -5
@@ -13,12 +17,15 @@ letters = ['A', 'C', 'G', 'T']
 def y(a, b):
 	return cost[letters.index(a), letters.index(b)]
 
-sequences = Fasta('exc1.fasta')
-seq1 = str(sequences['Seq1']).replace(' ','')
-seq2 = str(sequences['Seq2']).replace(' ','')
+#seq1 = str(sequences['Seq1']).replace(' ','')
+#seq2 = str(sequences['Seq2']).replace(' ','')
 
 #seq1 = 'AATAAT'
 #seq2 = 'AAGG'
+
+seq1 = fasta_sequences['Seq1'].seq.tostring()
+seq2 = fasta_sequences['Seq2'].seq.tostring()
+
 
 D = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
 Dopt = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
@@ -83,7 +90,10 @@ for i in range(1,len(seq1)+1):
 upperAlign = upperAlign[::-1]
 lowerAlign = lowerAlign[::-1]
 
+print(seq1)
+
+print(D)
 print("Cost " + str(D[len(seq1), len(seq2)]))
 print(upperAlign)
 print(lowerAlign)
-print(Dopt.T)
+print("nalign " + str(Dopt[len(seq1), len(seq2)]))
