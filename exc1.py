@@ -8,7 +8,7 @@ fasta_sequences = SeqIO.to_dict(SeqIO.parse(open('exc1.fasta'),'fasta'))
 
 
 
-gapcost = -5
+gapcost = 0
 
 cost = numpy.matrix('10 2 5 2; 2 10 2 5; 5 2 10 2; 2 5 2 10')
 
@@ -20,21 +20,24 @@ def y(a, b):
 #seq1 = str(sequences['Seq1']).replace(' ','')
 #seq2 = str(sequences['Seq2']).replace(' ','')
 
-#seq1 = 'AATAAT'
-#seq2 = 'AAGG'
+seq1 = 'AATAAT'
+seq2 = 'AAGG'
 
-seq1 = fasta_sequences['Seq1'].seq.tostring()
-seq2 = fasta_sequences['Seq2'].seq.tostring()
+#seq1 = fasta_sequences['Seq1'].seq.tostring()
+#seq2 = fasta_sequences['Seq2'].seq.tostring()
 
 
 D = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
 Dopt = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
 
 for i in range(1,len(seq1)+1):
-	D[i,0] = D[i-1,0] + gapcost
+	D[i,0] = 0
 
 for j in range(1,len(seq2)+1):
-	D[0,j] = D[0,j-1] + gapcost
+	D[0,j] = 0
+
+best = 0
+bi, bj = -1, -1
 
 for i in range(1,len(seq1)+1):
 	for j in range(1,len(seq2)+1):
@@ -43,13 +46,16 @@ for i in range(1,len(seq1)+1):
 		v1 = D[i-1, j-1] + y(a, b)
 		v2 = D[i, j-1] + gapcost
 		v3 = D[i-1, j] + gapcost
-		D[i, j] = max(v1, v2, v3)
+		D[i, j] = max(v1, v2, v3, 0)
+		if D[i,j] > best:
+			bi, bj = i, j
+			best = D[i,j]
 
-upperAlign = ''
-lowerAlign = ''
+upperAlign = '-'*(len(seq1)-bi)
+lowerAlign = '-'*(len(seq2)-bj)
 
-i, j = len(seq1), len(seq2)
-while i != 0 or j != 0:
+i, j = bi, bj#len(seq1), len(seq2)
+while (i != 0 or j != 0) and D[i,j] != 0:
 	a = seq1[i-1]
 	b = seq2[j-1]
 	if j>0 and i>0 and D[i, j] == D[i-1, j-1] + y(a, b):
@@ -64,6 +70,10 @@ while i != 0 or j != 0:
 		upperAlign = upperAlign + a
 		lowerAlign = lowerAlign + '-'
 		i = i-1
+
+upperAlign += '-'*i + ' ' * j
+lowerAlign += '-'*j + ' ' * i
+
 
 Dopt[0,0] = 1
 
