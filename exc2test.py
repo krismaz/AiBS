@@ -36,7 +36,8 @@ def input_y(a, b):
 	try:
 		return complex_ycost[letters.index(a), letters.index(b)]
 	except:
-		print('WTF ' + a + ' - ' + b)
+		print('WTF ' + a + ' - ' + b + ' is not a real cost')
+		sys.exit(1)
 		return 0 
 
 

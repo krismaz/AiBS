@@ -1,9 +1,13 @@
 Question 1:
+>seq1
 tatgga-gagaataaaagaactgagagatct-aatgtcgcagtcccgcac-tcgcgagatact-cactaagac-cactgtggaccatatggccataatcaaaaag
+>seq2
 -atggatgtcaatccga-ctctacttttcctaaaaattccagcgcaaaatgccataag-caccacattcccttatactggagatcct-cca-tacagccatggaa
 226.0
 Question 2:
+>seq1
 atggagagaataaaagaactgagagatct-aatgtcgcagtcccgcac-tcgcgagatactcactaagac-cactgtggaccatatggccataatcaaaaag
+>seq2
 -atggatgtcaatccgactctacttttcctaaaaattccagcgcaaaatgccataagcaccacattcccttatactggagatcctcca--tacagccatggaa
 266.0
 Question 3:
