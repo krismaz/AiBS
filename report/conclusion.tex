@@ -1,4 +1,2 @@
 \section{Conclusion}
-
-Through our work in this report, we have managed to implement different positioning schemes and distance measurements, and we have shown that it is possible to determine positions quite accurately from a set of signal strength readings.
-Finally, we have found a method of generating model-based data from theoretical models of wi-fi signal strength, and used this to experimentally compare the model-based solutions to the empirical, showing a noticeable but acceptable degradation of positioning accuracy.
+We have experimented with the two algorithms, and must conclude that the linear global alignment is significantly faster on large datasets. As shown in the experiments section we can seee that the affine algorithm runs around 70\% slower than the linear counterpart. The theory names both algorithms to run in $O(n^{2})$, but the linear is faster. This can be attributed to the complexity of the affine alignment, seeing as the linear one is a bit simpler to implement. 
