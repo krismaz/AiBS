@@ -5,9 +5,8 @@ unset log                              # remove any log-scaling
 unset label                            # remove any previous labels
 set xtic auto                          # set xtics automatically
 set ytic auto                          # set ytics automatically
-set title "Time is O(n^2)"
+set title "Affine Linear Comparison"
 set xlabel "n"
-set ylabel "time(ms)/n^2"
-set yr [0:0.03]
+set ylabel "Affine/Linear"
 
-plot  "data.data" using 1:($3/$2) title 'Linear' with linespoints linecolor rgb "blue"
+plot  "data.data" using 1:($3/$2) title 'Ratio' with linespoints linecolor rgb "blue"
