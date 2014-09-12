@@ -56,7 +56,9 @@ def global_linear(seq1, seq2, y, gapcost, bactrack = False):
 			lowerAlign = lowerAlign + '-'
 			i = i-1
 
+	print('>seq1')
 	print(upperAlign[::-1])
+	print('>seq2')
 	print(lowerAlign[::-1])
 
 	return D[len(seq1), len(seq2)]
@@ -128,7 +130,9 @@ def global_affine(seq1, seq2, y, a, b, bactrack = False):
 				else:
 					k += 1
 
+	print('>seq1')
 	print(upperAlign[::-1])
+	print('>seq2')
 	print(lowerAlign[::-1])
 
 	return S[len(seq1), len(seq2)]
