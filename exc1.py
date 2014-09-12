@@ -8,7 +8,7 @@ fasta_sequences = SeqIO.to_dict(SeqIO.parse(open('exc1.fasta'),'fasta'))
 
 
 
-gapcost = -5
+gapcost = 0
 
 cost = numpy.matrix('10 2 5 2; 2 10 2 5; 5 2 10 2; 2 5 2 10')
 
@@ -20,11 +20,11 @@ def y(a, b):
 #seq1 = str(sequences['Seq1']).replace(' ','')
 #seq2 = str(sequences['Seq2']).replace(' ','')
 
-#seq1 = 'AATAAT'
-#seq2 = 'AAGG'
+seq1 = 'AATAAT'
+seq2 = 'AAGG'
 
-seq1 = fasta_sequences['Seq1'].seq.tostring()
-seq2 = fasta_sequences['Seq2'].seq.tostring()
+#seq1 = fasta_sequences['Seq1'].seq.tostring()
+#seq2 = fasta_sequences['Seq2'].seq.tostring()
 
 
 D = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))

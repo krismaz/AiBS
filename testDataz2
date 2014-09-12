@@ -1,0 +1,253 @@
+Generating data for 500
+Running linear with size 500
+2199.093089,task-clock,0.39%
+272,context-switches,1.00%
+1,cpu-migrations,39.44%
+7340,page-faults,0.57%
+7117636670,cycles,0.35%
+3640603754,stalled-cycles-frontend,0.64%
+2229101182,stalled-cycles-backend,0.82%
+7501649685,instructions,0.06%
+1658826993,branches,0.04%
+29666044,branch-misses,1.29%
+Running affine with size 500
+3674.266098,task-clock,0.59%
+417,context-switches,2.82%
+2,cpu-migrations,44.72%
+8247,page-faults,0.53%
+11930585930,cycles,0.62%
+5780537280,stalled-cycles-frontend,1.12%
+3276602460,stalled-cycles-backend,2.77%
+13221794726,instructions,0.19%
+2921683942,branches,0.15%
+53807838,branch-misses,1.77%
+Generating data for 525
+Running linear with size 525
+2413.314855,task-clock,0.42%
+289,context-switches,0.73%
+2,cpu-migrations,57.63%
+7445,page-faults,0.91%
+7831755522,cycles,0.43%
+4009035165,stalled-cycles-frontend,0.62%
+2322834456,stalled-cycles-backend,2.03%
+8216381111,instructions,0.28%
+1817437667,branches,0.24%
+32183904,branch-misses,1.61%
+Running affine with size 525
+3975.294545,task-clock,0.44%
+429,context-switches,0.84%
+1,cpu-migrations,40.82%
+8370,page-faults,1.02%
+13058140892,cycles,0.44%
+6313900633,stalled-cycles-frontend,0.87%
+3653148697,stalled-cycles-backend,1.19%
+14480666876,instructions,0.25%
+3201332644,branches,0.23%
+58352008,branch-misses,1.13%
+Generating data for 550
+Running linear with size 550
+2620.975852,task-clock,0.57%
+308,context-switches,0.76%
+1,cpu-migrations,29.81%
+7393,page-faults,1.14%
+8524251145,cycles,0.57%
+4379871111,stalled-cycles-frontend,0.84%
+2656246515,stalled-cycles-backend,1.10%
+8946556885,instructions,0.32%
+1978251278,branches,0.26%
+35033197,branch-misses,2.61%
+Running affine with size 550
+4384.969930,task-clock,0.41%
+475,context-switches,2.57%
+1,cpu-migrations,56.54%
+8320,page-faults,1.11%
+14243401908,cycles,0.31%
+6873374897,stalled-cycles-frontend,0.71%
+3991274368,stalled-cycles-backend,1.01%
+15835218919,instructions,0.22%
+3502199879,branches,0.21%
+63498125,branch-misses,1.05%
+Generating data for 575
+Running linear with size 575
+2812.562729,task-clock,0.47%
+334,context-switches,2.89%
+2,cpu-migrations,36.21%
+7219,page-faults,1.50%
+9143587986,cycles,0.45%
+4659755583,stalled-cycles-frontend,0.86%
+2755856976,stalled-cycles-backend,1.66%
+9673136854,instructions,0.07%
+2140833436,branches,0.09%
+36787488,branch-misses,1.20%
+Running affine with size 575
+4754.843572,task-clock,0.43%
+491,context-switches,0.69%
+2,cpu-migrations,37.17%
+8283,page-faults,0.68%
+15482303381,cycles,0.40%
+7466802119,stalled-cycles-frontend,0.72%
+4330636033,stalled-cycles-backend,1.06%
+17233372557,instructions,0.20%
+3812041869,branches,0.20%
+68440755,branch-misses,1.09%
+Generating data for 600
+Running linear with size 600
+3070.800462,task-clock,0.56%
+365,context-switches,3.36%
+1,cpu-migrations,50.92%
+7559,page-faults,1.03%
+9948422160,cycles,0.38%
+5093224254,stalled-cycles-frontend,0.73%
+3130944225,stalled-cycles-backend,1.07%
+10447910737,instructions,0.06%
+2316406567,branches,0.08%
+39911703,branch-misses,1.05%
+Running affine with size 600
+5289.223312,task-clock,0.81%
+560,context-switches,2.50%
+2,cpu-migrations,34.38%
+8378,page-faults,0.85%
+17322960334,cycles,0.74%
+8639875723,stalled-cycles-frontend,1.39%
+4897502346,stalled-cycles-backend,3.13%
+18698838797,instructions,0.15%
+4137952204,branches,0.13%
+75194845,branch-misses,1.24%
+Generating data for 625
+Running linear with size 625
+3281.315808,task-clock,0.39%
+369,context-switches,1.06%
+3,cpu-migrations,29.36%
+7363,page-faults,1.06%
+10746633024,cycles,0.42%
+5509233945,stalled-cycles-frontend,0.76%
+3240469618,stalled-cycles-backend,2.58%
+11296644200,instructions,0.24%
+2502435117,branches,0.19%
+43166344,branch-misses,1.43%
+Running affine with size 625
+5622.132387,task-clock,0.56%
+578,context-switches,0.77%
+1,cpu-migrations,74.33%
+8227,page-faults,1.02%
+18212086914,cycles,0.48%
+8795101096,stalled-cycles-frontend,0.88%
+5044315829,stalled-cycles-backend,1.44%
+20219452999,instructions,0.10%
+4474389173,branches,0.08%
+82434220,branch-misses,1.18%
+Generating data for 650
+Running linear with size 650
+3527.343326,task-clock,0.57%
+408,context-switches,3.60%
+2,cpu-migrations,59.03%
+7500,page-faults,1.14%
+11450974966,cycles,0.49%
+5820154028,stalled-cycles-frontend,0.86%
+3437682850,stalled-cycles-backend,1.99%
+12163859229,instructions,0.16%
+2693977361,branches,0.16%
+45903403,branch-misses,1.35%
+Running affine with size 650
+6016.099759,task-clock,0.49%
+610,context-switches,0.62%
+2,cpu-migrations,39.26%
+8362,page-faults,0.51%
+19590028414,cycles,0.42%
+9447549438,stalled-cycles-frontend,0.90%
+5473876794,stalled-cycles-backend,1.50%
+21848319302,instructions,0.09%
+4836017272,branches,0.09%
+86056626,branch-misses,0.70%
+Generating data for 675
+Running linear with size 675
+3821.178100,task-clock,0.37%
+411,context-switches,0.85%
+1,cpu-migrations,53.27%
+7516,page-faults,1.16%
+12417569612,cycles,0.36%
+6375177254,stalled-cycles-frontend,0.65%
+3862916753,stalled-cycles-backend,0.98%
+13016803076,instructions,0.06%
+2886525588,branches,0.06%
+49360069,branch-misses,1.54%
+Running affine with size 675
+6464.668505,task-clock,0.58%
+652,context-switches,0.88%
+4,cpu-migrations,46.52%
+8326,page-faults,1.03%
+21038870400,cycles,0.57%
+10119465847,stalled-cycles-frontend,1.11%
+5729069157,stalled-cycles-backend,2.85%
+23459352966,instructions,0.13%
+5190298889,branches,0.12%
+95175110,branch-misses,2.03%
+Generating data for 700
+Running linear with size 700
+4063.748241,task-clock,0.47%
+439,context-switches,0.95%
+1,cpu-migrations,58.44%
+7506,page-faults,0.85%
+13274320574,cycles,0.45%
+6809035896,stalled-cycles-frontend,0.85%
+4149053436,stalled-cycles-backend,1.05%
+13959955917,instructions,0.06%
+3096632231,branches,0.08%
+52687038,branch-misses,0.95%
+Running affine with size 700
+6938.857863,task-clock,0.60%
+689,context-switches,0.79%
+5,cpu-migrations,45.39%
+8529,page-faults,1.19%
+22658627649,cycles,0.62%
+10953983913,stalled-cycles-frontend,1.18%
+6066117848,stalled-cycles-backend,2.74%
+25177234467,instructions,0.17%
+5573148586,branches,0.17%
+99896861,branch-misses,1.36%
+Generating data for 725
+Running linear with size 725
+4378.879893,task-clock,0.35%
+466,context-switches,1.09%
+2,cpu-migrations,54.49%
+7448,page-faults,0.53%
+14253107389,cycles,0.35%
+7319518239,stalled-cycles-frontend,0.56%
+4372955818,stalled-cycles-backend,1.72%
+14950148390,instructions,0.15%
+3314679172,branches,0.13%
+56354094,branch-misses,1.21%
+Running affine with size 725
+7450.422597,task-clock,0.55%
+735,context-switches,0.77%
+1,cpu-migrations,59.63%
+8432,page-faults,0.51%
+24274316483,cycles,0.55%
+11739362618,stalled-cycles-frontend,1.05%
+6761468449,stalled-cycles-backend,1.40%
+26968780866,instructions,0.23%
+5971511559,branches,0.21%
+108533876,branch-misses,1.56%
+Generating data for 750
+Running linear with size 750
+4665.679164,task-clock,0.82%
+506,context-switches,3.52%
+1,cpu-migrations,32.39%
+7416,page-faults,1.04%
+15180742563,cycles,0.75%
+7774184518,stalled-cycles-frontend,1.06%
+4700365222,stalled-cycles-backend,1.09%
+16008149801,instructions,0.42%
+3546204132,branches,0.35%
+58715760,branch-misses,1.39%
+Running affine with size 750
+7852.961845,task-clock,0.42%
+777,context-switches,0.43%
+2,cpu-migrations,80.26%
+8392,page-faults,1.22%
+25707646600,cycles,0.42%
+12343535809,stalled-cycles-frontend,0.77%
+7110010164,stalled-cycles-backend,1.44%
+28769378805,instructions,0.09%
+6369698180,branches,0.08%
+116315561,branch-misses,1.57%
