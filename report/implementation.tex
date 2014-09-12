@@ -1,29 +1,9 @@
-\section{Working Details}
+\section{Methods}
 
-In implementing the positioning strategies for wi-fi positioning we had to take several factors into account. Mostly, these are related to access point visibility, but several other concerns influenced our decision-making during development, in this chapter we give a brief outline of the choices we made.
+We have implemented two algorithms: Global Linear Alignment and Global Affine Alignment. 
 
-\subsection{Determining distance between wi-fi samples}
+Our implementation is done in Python3, using the Numpy library for handling tables, and the BioPy library for parsing FASTA-files.
+Everything was implemented using the pseudo-code from the slides from the lecture. 
 
-Since wi-fi signal strength measurements are highly variable not only  in signal strength but also in the amount of access points included, a robust strategy for comparing sets of measurements must be developed.
-
-First of all, we consider only the readings that are available in the online data. The reasoning for this choice being that the offline data set should include as many access points as possible, and any readings that are only available in the offline set are considered to be down for maintenance, or similarly temporarily unavailable.
-
-Furthermore, it is important to consider how to handle readings that are only available in the online set. At first, we simply ignored these values, but this turned out to be a very bad choice, since completely disjoint measurements will now have a distance of 0, while their real world positions are often very far apart.
-We quickly improved this by assuming a missing offline reading to be 0, and even further, by assuming it to be the lowest recorded value for that particular access point.
-
-Taking missing online readings into account was considered, but online samples were considered too volatile for this to be a feasible strategy.
-
-\subsection{Selecting the nearest neighbours, and averaging position}
-
-The nearest neighbour(s) are easily selected by selecting the trace entries that have the smallest distance(s) according to the distance functions described above. The ordering itself is done using the Google Guava libraries \citep{Guava}.
-
-The k nearest selected elements can be averaged using the \texttt{avgPosition} method of the \texttt{Statistics} class found in the utility libraries, which creates an unbiased average.
-A weighted average might be an interesting option to explore in further experiments.
-
-\subsection{Model-based data}
-
-When generating data for the model, points are laid out on a grid, and assigned a signal strength reading for each known access point as given by the formula in the RADAR article  \citep{RADAR}. Note that we do not apply the WAF-factor, and that both $n$, $P_{d_0}$ and grid parameters are adjustable.
-
-These points are then passed on to the same programs that handle empirical positioning.
-
-Note that since we only consider readings that are present in the online set, we do not need to perform any sort of pruning of the visible access points in the model-generated readings. 
+The algorithms operate on strings (instead of alternatives like arrays or lists). They use a row by row approach as opposed to recursive memoization. 
+When we use affine backtracking we alternate between row and column, to ensure linear backtracking performance. 
