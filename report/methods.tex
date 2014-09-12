@@ -2,8 +2,8 @@
 
 We have implemented two algorithms: Global Linear Alignment and Global Affine Alignment. 
 
-Our implementation is done in Python3, using the Numpy library for handling tables, and the BioPy library for parsing FASTA-files.
-Everything was implemented using the pseudo-code from the slides from the lecture. 
+Our implementation is done in Python3, using the Numpy library for handling tables, and the Biopython library for parsing FASTA-files.
+Everything was implemented using the pseudo-code from the slides of the lectures. 
 
 The algorithms operate on strings (instead of alternatives like arrays or lists). They use a row by row approach as opposed to recursive memoization. 
 When we use affine backtracking we alternate between row and column, to ensure linear backtracking performance. 
@@ -11,7 +11,7 @@ When we use affine backtracking we alternate between row and column, to ensure l
 \subsection{Running}
 
 To run the program, \verb|python3| with the packages \verb|numpy| and
-\verb|biopython| needs to be installed. On a Ubunto based system, this can
+\verb|biopython| needs to be installed. On an Ubuntu-based system, this can
 be achieved by running:
 
 \verb|sudo apt-get install python3 python3-dev python3-setuptools|
@@ -49,3 +49,5 @@ where
   \verb|--backtrack| and output a matrix of scores for every
   combination of sequences in \verb|fasta_file|.
 \end{description}
+
+It is important to notice, that our command-line interface does not allow specifiying the gapcost. The underlying library easily supports any positive gapcost as a parameter, but since the gapcost is fixed in all experiments, we excluded it from the external interface to avoid cluttering. 
