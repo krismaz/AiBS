@@ -23,7 +23,7 @@ def global_linear(seq1, seq2, y, gapcost, bactrack = False):
 
     for j in range(1,len(seq2)+1):
         D[0,j] = D[0,j-1] + gapcost
- 
+
     for i in range(1,len(seq1)+1):
         for j in range(1,len(seq2)+1):
             a = seq1[i-1]
@@ -61,7 +61,6 @@ def global_linear(seq1, seq2, y, gapcost, bactrack = False):
 
     return D[len(seq1), len(seq2)]
 
-
 def global_affine(seq1, seq2, y, a, b, bactrack = False):
     seq1 = seq1.lower()
     seq2 = seq2.lower()
@@ -69,7 +68,6 @@ def global_affine(seq1, seq2, y, a, b, bactrack = False):
     S = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
     I = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
 
- 
     for i in range(0,len(seq1)+1):
         for j in range(0,len(seq2)+1):
 
@@ -132,6 +130,3 @@ def global_affine(seq1, seq2, y, a, b, bactrack = False):
     print(lowerAlign[::-1])
 
     return S[len(seq1), len(seq2)]
-
-
-
