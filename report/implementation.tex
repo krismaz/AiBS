@@ -1,9 +1,0 @@
-\section{Methods}
-
-We have implemented two algorithms: Global Linear Alignment and Global Affine Alignment. 
-
-Our implementation is done in Python3, using the Numpy library for handling tables, and the BioPy library for parsing FASTA-files.
-Everything was implemented using the pseudo-code from the slides from the lecture. 
-
-The algorithms operate on strings (instead of alternatives like arrays or lists). They use a row by row approach as opposed to recursive memoization. 
-When we use affine backtracking we alternate between row and column, to ensure linear backtracking performance. 
