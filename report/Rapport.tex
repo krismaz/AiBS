@@ -1,0 +1,55 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage[export]{adjustbox}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage[toc]{appendix}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage[round]{natbib}
+
+\title{Pervasive Positioning 1}
+
+\date{\today}
+
+\author{Jan H. Knudsen (20092926)
+\and
+Roland L. Pedersen (20092817)
+\and
+Kris V. Ebbesen (20094539)
+}
+
+
+
+%************************************************************
+\usepackage{graphicx}
+	\setkeys{Gin}{width=\textwidth}
+\begin{document}
+\maketitle
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{front.png}
+\end{center}
+\newpage
+\tableofcontents
+\newpage
+
+\input{intro}
+
+\input{implementation}
+
+\input{experiments}
+
+\input{running}
+
+\input{conclusion}
+
+
+\bibliography{Rapport}
+\bibliographystyle{unsrtnat} 
+
+\end{document}
+
+
+
