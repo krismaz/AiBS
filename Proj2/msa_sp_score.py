@@ -18,7 +18,7 @@ import string
 ##########################################################################
 
 def print_usage():
-	print """
+    print """
 Usage: msa_sp_score.py <filename>
 
 where <filename> contains a multiple sequence alignment over the alphabet
@@ -53,62 +53,65 @@ def str2seq(s):
 ###########################################################################
 
 def read_fasta(filename):
-	f = open(filename)
-	res = []
-	curr_str = ""
-	curr_name = ""
-	for l in f.readlines():
-		l = string.strip(l)
-		# Ignore empty lines
-		if len(l) == 0:
-			continue
-		# Ignore comment lines
-		elif l[0] == ';':
-			continue
-		# A new string starts when a new name is found
-		elif l[0] == '>':
-			if curr_name != "":
-				res.append(remove_whitespaces(curr_str))
-			curr_str = ""
-			curr_name = l[1:].strip()
-		# Otherwise append current line to the current string
-		else:
-			curr_str = curr_str + l
-	res.append(remove_whitespaces(curr_str))
-	return res
+    f = open(filename)
+    res = []
+    curr_str = ""
+    curr_name = ""
+    for l in f.readlines():
+        l = string.strip(l)
+        # Ignore empty lines
+        if len(l) == 0:
+            continue
+        # Ignore comment lines
+        elif l[0] == ';':
+            continue
+        # A new string starts when a new name is found
+        elif l[0] == '>':
+            if curr_name != "":
+                res.append(remove_whitespaces(curr_str))
+            curr_str = ""
+            curr_name = l[1:].strip()
+        # Otherwise append current line to the current string
+        else:
+            curr_str = curr_str + l
+    res.append(remove_whitespaces(curr_str))
+    return res
 
 def remove_whitespaces(s):
-	return string.join(s.split(), "")
-	
+    return string.join(s.split(), "")
+    
 ###########################################################################
 # compute_sp_score(filename)
 #
 # Returns the sp-score of the MSA stored in the FASTA file 'filename'
 ###########################################################################
 
-def compute_sp_score(filename):	
-	# Read FASTA file and convert input strings to sequences
-	row = []
-	for s in read_fasta(filename):
-		row.append(str2seq(s))
-	# Compute the score of each induced pairwise alignment
-	score = 0
-	for i in range(len(row)):
-		for j in range(i+1, len(row)):
-			if len(row[i]) != len(row[j]):
-				print "ERROR: Rows", i, "and", j, "have different lengths."
-				sys.exit(1)
-			for c in range(len(row[i])):
-				score = score + cost[row[i][c]][row[j][c]]
-	return score
+def compute_sp_score(filename, isNoRead=False): 
+    # Read FASTA file and convert input strings to sequences
+    row = []
+    if isNoRead:
+        row = filename
+    else:
+        for s in read_fasta(filename):
+            row.append(str2seq(s))
+    # Compute the score of each induced pairwise alignment
+    score = 0
+    for i in range(len(row)):
+        for j in range(i+1, len(row)):
+            if len(row[i]) != len(row[j]):
+                print "ERROR: Rows", i, "and", j, "have different lengths."
+                sys.exit(1)
+            for c in range(len(row[i])):
+                score = score + cost[row[i][c]][row[j][c]]
+    return score
 
 if __name__ == '__main__':
 
-	if len(sys.argv) != 2:
-		print_usage()
-		sys.exit(1)
-	try:
-		print compute_sp_score(sys.argv[1])
-	except IOError:
-		print "ERROR: Cannot open input file %s" % (sys.argv[1])
-		sys.exit(1)
+    if len(sys.argv) != 2:
+        print_usage()
+        sys.exit(1)
+    try:
+        print compute_sp_score(sys.argv[1])
+    except IOError:
+        print "ERROR: Cannot open input file %s" % (sys.argv[1])
+        sys.exit(1)

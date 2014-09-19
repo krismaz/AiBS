@@ -1,6 +1,7 @@
 #! /usr/bin/python3 
 import sys
 import numpy
+from itertools import permutations
 from Bio import SeqIO
 
 complex_ycost = numpy.matrix('0 5 2 5; 5 0 5 2; 2 5 0 5; 5 2 5 0')
@@ -172,6 +173,31 @@ def approx(y, gapcost, *seqs):
         columns = extend(columns, *A)
     return transpose_columns(columns)
 
+def multi_approx(y, gapcost, *seqs):
+    best_seq = None
+    best_score = -1
+
+    for seq1 in seqs: 
+        score = sum([global_linear(seq1, seq2, y, gapcost) for seq2 in seqs if seq2 != seq1])
+        if score > best_score:
+            best_score = score
+            best_seq = seq1
+
+    seqs = list(seqs)
+    print("index of best seq: " + str(seqs.index(best_seq)))
+    seqs.remove(best_seq)
+    for perm in permutations(list(range(len(seqs)))):
+        columns = [ [c] for c in best_seq ]
+        print("permutation: " + str(perm))
+        for i in perm:
+            A = global_linear(best_seq, seqs[i], y, gapcost, backtrack=True)
+            columns = extend(columns, *A)
+        alignment = transpose_columns(columns)
+        print("Alignment: " + str(alignment))
+        score = compute_score(alignment)
+        print("Score: " + str(score))
+
+
 def transpose_columns(columns):
     return [''.join([columns[i][j] for i in range(len(columns))]) for j in range(len(columns[0]))]
 
@@ -204,3 +230,31 @@ def extend(columns, upperAlign, lowerAlign):
         print("SYSTEM FAILURE!!! PANIC")
         sys.exit(1)
     return results
+
+
+def compute_score(data): 
+    cost = [[0, 5, 2, 5, 5],  # A
+            [5, 0, 5, 2, 5],  # C
+            [2, 5, 0, 5, 5],  # G
+            [5, 2, 5, 0, 5],  # T
+            [5, 5, 5, 5, 0]]  #-'
+    # Compute the score of each induced pairwise alignment
+    score = 0
+    row = [str2seq(s) for s in data]
+    for i in range(len(row)):
+        for j in range(i+1, len(row)):
+            if len(row[i]) != len(row[j]):
+                print("ERROR: Rows " + str(i) + " and " + str(j) + " have different lengths.")
+                sys.exit(1)
+            for c in range(len(row[i])):
+                score = score + cost[row[i][c]][row[j][c]]
+    return score
+
+def str2seq(s):
+    dict_str2seq = {'a':0, 'c':1, 'g':2, 't':3, 'A':0, 'C':1, 'G':2, 'T':3, '-':4, 'N':0, 'R':0, 'S':0}
+    try:
+        seq = [dict_str2seq[c] for c in s]
+        return seq
+    except KeyError as h:
+        print("ERROR: Illegal character " + str(h) + " in input string.")
+        sys.exit(1)

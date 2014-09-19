@@ -1,0 +1,5 @@
+Approx overshoot by constant factor due to cost-matrix
+
+
+
+python3 sp_exact_3.py exc3.cost brca1-testseqs.fasta brca1_mus_musculus brca1_rattus_norvegicus brca1_macaca_mulatta && python sp_approx.py exc3.cost brca1-testseqs.fasta brca1_mus_musculus brca1_rattus_norvegicus brca1_macaca_mulatta > test.out && python msa_sp_score.py test.out
