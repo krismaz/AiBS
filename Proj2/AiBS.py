@@ -199,7 +199,8 @@ def multi_approx(y, gapcost, *seqs):
 
 
 def transpose_columns(columns):
-    return [''.join([columns[i][j] for i in range(len(columns))]) for j in range(len(columns[0]))]
+    #return ["".join(x for y in columns for x in y)]
+    return (''.join(col[j] for col in columns) for j,_ in enumerate(columns[0])) #Now Dan can be happy :D
 
 def extend(columns, upperAlign, lowerAlign):
     c, i = 0, 0

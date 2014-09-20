@@ -38,6 +38,6 @@ if args.permutations:
     AiBS.multi_approx(input_y, 5, *seqs)
 else: 
     alignment = AiBS.approx(input_y, 5, *seqs)
-    for i in range(len(alignment)):
+    for (i, r) in enumerate(alignment):
         print(">seq" + str(i+1))
-        print(alignment[i])
+        print(r)
