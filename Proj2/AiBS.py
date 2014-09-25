@@ -173,6 +173,24 @@ def approx(y, gapcost, *seqs):
         columns = extend(columns, *A)
     return transpose_columns(columns)
 
+def approx_score(y, gapcost, *seqs):
+    best_seq = None
+    best_score = -1
+
+    for seq1 in seqs: 
+        score = sum([global_linear(seq1, seq2, y, gapcost) for seq2 in seqs if seq2 != seq1])
+        if score > best_score:
+            best_score = score
+            best_seq = seq1
+
+    columns = [ [c] for c in best_seq ]
+    seqs = list(seqs)
+    seqs.remove(best_seq)
+    for seq in seqs: 
+        A = global_linear(best_seq, seq, y, gapcost, backtrack=True)
+        columns = extend(columns, *A)
+    return compute_score(transpose_columns(columns))
+
 def multi_approx(y, gapcost, *seqs):
     best_seq = None
     best_score = -1
@@ -192,7 +210,7 @@ def multi_approx(y, gapcost, *seqs):
         for i in perm:
             A = global_linear(best_seq, seqs[i], y, gapcost, backtrack=True)
             columns = extend(columns, *A)
-        alignment = transpose_columns(columns)
+        alignment = list(transpose_columns(columns))
         print("Alignment: " + str(alignment))
         score = compute_score(alignment)
         print("Score: " + str(score))
@@ -233,7 +251,7 @@ def extend(columns, upperAlign, lowerAlign):
     return results
 
 
-def compute_score(data): 
+def compute_score(data):
     cost = [[0, 5, 2, 5, 5],  # A
             [5, 0, 5, 2, 5],  # C
             [2, 5, 0, 5, 5],  # G
@@ -241,7 +259,7 @@ def compute_score(data):
             [5, 5, 5, 5, 0]]  #-'
     # Compute the score of each induced pairwise alignment
     score = 0
-    row = [str2seq(s) for s in data]
+    row = [str2seq(s) for s in list(data)]
     for i in range(len(row)):
         for j in range(i+1, len(row)):
             if len(row[i]) != len(row[j]):
