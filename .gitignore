@@ -34,6 +34,7 @@
 *.xdy
 *.tdo
 *.pdf
+!*plot*.pdf
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
