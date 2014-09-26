@@ -1,4 +1,4 @@
 \section{Introduction}
-In this project we have implemented linear and the affine global alignment. The point of the project is to compare the two methods of aligning sequences in termes of running time. We have set up experiments to try different sequence lengths, with the standard DNA alphabet of 'ACGT'.
+In this project we have implemented two algorithms for global alignment; the dynamic exact global alignment and a 2-approximation algorithm. The intention of the project is to compare the two in column based score, and to see that the approximation algorithm is at most a factor 2 worse than the exact counterpart. 
 
-Our implementations works seems to work well, completing the example data with the correct alignments, and correct scores. Our implementation also supports custom alphabets, and varying cost matrixes.
+Our implementation works well. Both the exact and the 2-approximation algorithm handles the input correctly, but some strange behavior was observed when testing with two sequences. This will be discussed further in the experiments section. 
