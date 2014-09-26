@@ -66,11 +66,16 @@ def exact_3(seq1, seq2, seq3, y, gapcost, backtrack=False):
     D12 = global_linear(seq1, seq2, y, gapcost, matrix=True)
     D13 = global_linear(seq1, seq3, y, gapcost, matrix=True)
     D23 = global_linear(seq2, seq3, y, gapcost, matrix=True)
-    for i in range(0, len(seq1)):
-        for j in range(0, len(seq2)): 
+
+    for i in range(0, len(seq1)+1):
+        for j in range(0, len(seq2)+1):
             D[i, j, 0] = D12[i, j] + (i + j) * gapcost
-            D[i, 0, j] = D13[i, j] + (i + j) * gapcost
-            D[0, i, j] = D23[i, j] + (i + j) * gapcost
+    for i in range(0, len(seq1)+1):
+        for k in range(0, len(seq3)+1):
+            D[i, 0, k] = D13[i, k] + (i + k) * gapcost
+    for j in range(0, len(seq2)+1):
+        for k in range(0, len(seq3)+1):
+            D[0, j, k] = D23[j, k] + (j + k) * gapcost
 
     for i in range(1, len(seq1)+1):
         for j in range(1, len(seq2)+1): 
@@ -88,6 +93,7 @@ def exact_3(seq1, seq2, seq3, y, gapcost, backtrack=False):
                 d7 = D[i, j, k-1] + 2 * gapcost
 
                 D[i, j, k] = min(d1, d2, d3, d4, d5, d6, d7)
+
     if not backtrack: 
         return D[len(seq1), len(seq2), len(seq3)]
 
@@ -104,11 +110,6 @@ def exact_3(seq1, seq2, seq3, y, gapcost, backtrack=False):
         cij = y(seq1[i-1], seq2[j-1]) if i > 0 and j > 0 else 0
         cik = y(seq1[i-1], seq3[k-1]) if i > 0 and k > 0 else 0 
         cjk = y(seq2[j-1], seq3[k-1]) if j > 0 and k > 0 else 0
-
-        d5 = D[i-1, j, k] + 2 * gapcost
-        d6 = D[i, j-1, k] + 2 * gapcost
-        d7 = D[i, j, k-1] + 2 * gapcost
-
 
         if j>0 and i>0 and k>0 and D[i, j, k] == D[i-1, j-1, k-1] + cij + cik + cjk:
             upperAlign = upperAlign + a
@@ -146,7 +147,7 @@ def exact_3(seq1, seq2, seq3, y, gapcost, backtrack=False):
             lowerAlign = lowerAlign + c
             k = k-1
         else: 
-            print("LOL SYSTEM EXIT ONE!")
+            print("LOL SYSTEM EXIT ONE!",upperAlign, middleAlign, lowerAlign)
             sys.exit(1)
     print(upperAlign[::-1])
     print(middleAlign[::-1])
