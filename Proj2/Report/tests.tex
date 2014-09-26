@@ -1,3 +1,6 @@
 \section{Tests}
 In order to verify the correct workings of the algorithms, we were faced with the problem of not having proper reference data, which made verifying our output quite difficult.
-In an attempt at verifying the exact algorithm, we ran it on a small set of tests data. The results of the test data run was then manually compared with the input sequences to ensure that the sequences were not changed except from adding gaps, and they were scored using the supplied scoring program, to make sure that the calculated score was correct. Whether this alignment was optimal or not was not really something we can 
+
+In an attempt at verifying the exact algorithm, we ran it on a small set of tests data. The results of the test data run was then manually compared with the input sequences to ensure that the sequences were not changed except from adding gaps, and they were scored using the supplied scoring program, to make sure that the calculated score was correct. Whether this alignment was optimal or not was not really something we can test, since this requires a trustworthy 3rd party, or some sample data.
+
+In order to test our approximation algorithm, we ran it on a set of test data, verified that the alignments were valid extensions of the input, and ensured that they scored no more than 1/3 higher than the output from our exact algorithm. The experiments section further supports the approximation ratio.
