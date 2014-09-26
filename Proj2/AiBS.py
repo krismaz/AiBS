@@ -67,14 +67,14 @@ def exact_3(seq1, seq2, seq3, y, gapcost, backtrack=False):
     D13 = global_linear(seq1, seq3, y, gapcost, matrix=True)
     D23 = global_linear(seq2, seq3, y, gapcost, matrix=True)
 
-    for i in range(0, len(seq1)):
-        for j in range(0, len(seq2)): 
+    for i in range(0, len(seq1)+1):
+        for j in range(0, len(seq2)+1):
             D[i, j, 0] = D12[i, j] + (i + j) * gapcost
-    for i in range(0, len(seq1)):
-        for k in range(0, len(seq3)):
+    for i in range(0, len(seq1)+1):
+        for k in range(0, len(seq3)+1):
             D[i, 0, k] = D13[i, k] + (i + k) * gapcost
-    for j in range(0, len(seq2)):
-        for k in range(0, len(seq3)):
+    for j in range(0, len(seq2)+1):
+        for k in range(0, len(seq3)+1):
             D[0, j, k] = D23[j, k] + (j + k) * gapcost
 
     for i in range(1, len(seq1)+1):
