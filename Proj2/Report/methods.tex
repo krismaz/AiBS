@@ -1,8 +1,7 @@
 \section{Methods}
 
-We have implemented two algorithms: Exact alignment of 3 sequenses by
-column based exhaustive search, and star based approximate alignment
-of an arbitray number of sequenses.
+We have implemented two algorithms: Exact alignment of 3 sequences by
+column based exhaustive search, and star-tree based approximate alignment of an arbitrary number of sequences.
 
 Our implementation is done in Python3, using the Numpy library for
 handling matrices, and the Biopython library for parsing FASTA-files.
@@ -13,6 +12,8 @@ from the guidelines in the slides.
 The algorithms operate on strings (instead of alternatives like arrays
 or lists). They use a iterative approach as opposed to recursive
 memoization.
+
+As a note on the merging step of the approximate algorithm, we store the alignments column-by-column in lists of chars, since this allows us to easily add more columns, and append characters to the en of the lists.
 
 \subsection{Running}
 
@@ -37,9 +38,9 @@ where
 \begin{description}
 \item{\verb|cost_file|:} A file like \verb|exc3.cost|, where the
   first line is the alphabet and the rest og the file is a cost-matrix
-  (rows seperated by ; and otherwise just whitespace seperated).
+  (rows separated by ; and otherwise just whitespace separated).
 \item{\verb|fasta_file|:} The name of a \verb|FASTA| file.
-\item{\verb|seq[1-3]_name|:} The names of the sequenses to use from
+\item{\verb|seq[1-3]_name|:} The names of the sequences to use from
   \verb|fasta_file|.
 \item{\verb|--backtrack|:} Specifies that the algorithm should
   backtrack, i.e. actually print the alignment instead of just the
@@ -56,14 +57,14 @@ where
 
 \begin{description}
 \item{\verb|cost_file|:} A file like \verb|exc3.cost|, where the
-  first line is the alphabet and the rest og the file is a cost-matrix
-  (rows seperated by ; and otherwise just whitespace seperated).
+  first line is the alphabet and the rest of the file is a cost-matrix
+  (rows separated by ; and otherwise just whitespace separated).
 \item{\verb|fasta_file|:} The name of a \verb|FASTA| file.
-\item{\verb|seq_name|s:} The names of the sequenses to use from
+\item{\verb|seq_name|s:} The names of the sequences to use from
   \verb|fasta_file|.
 \item{\verb|--permutations|:} Specifies that the algorithm should run
-  with all permutations of sequenses other than the guiding sequence,
+  with all permutations of sequences other than the guiding sequence,
   as required for the experiments.
 \end{description}
 
-It is important to notice, that our command-line interface does not allow specifiying the gapcost. The underlying library easily supports any positive gapcost as a parameter, but since the gapcost is fixed in all experiments, we excluded it from the external interface to avoid cluttering. 
+It is important to notice, that our command-line interface does not allow specifying the gapcost. The underlying library easily supports any positive gapcost as a parameter, but since the gapcost is fixed in all experiments, we excluded it from the external interface to avoid cluttering. 
