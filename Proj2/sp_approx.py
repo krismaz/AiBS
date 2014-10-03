@@ -27,8 +27,9 @@ with open(args.cost, 'r') as cost_file:
 
 
 def input_y(a, b):
+    fix = lambda x: x if x in ['a','c','g','t'] else 'a'
     try:
-        return complex_ycost[letters.index(a), letters.index(b)]
+        return complex_ycost[letters.index(fix(a)), letters.index(fix(b))]
     except:
         print('WTF ' + a + ' - ' + b + ' is not a real cost')
         sys.exit(1)
