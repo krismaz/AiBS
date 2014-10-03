@@ -17,7 +17,6 @@ undef = float("inf")
 
 
 def global_linear(seq1, seq2, y, gapcost, backtrack = False, matrix = False):
-    print("YLO)")
     seq1 = seq1.lower()
     seq2 = seq2.lower()
     D = numpy.zeros(shape=(len(seq1)+1,len(seq2)+1))
@@ -166,7 +165,6 @@ def approx(y, gapcost, *seqs):
     for seq1 in seqs: 
         score = sum([global_linear(seq1, seq2, y, gapcost) for seq2 in seqs if seq2 != seq1])
         counter += 1
-        print(str(counter) + '/' + str(len(seqs)))
         if score > best_score:
             best_score = score
             best_seq = seq1
@@ -181,7 +179,6 @@ def approx(y, gapcost, *seqs):
         A = global_linear(best_seq, seq, y, gapcost, backtrack=True)
         columns = extend(columns, *A)
         counter += 1
-        print(str(counter) + '/' + str(len(seqs)))
     return transpose_columns(columns)
 
 def approx_score(y, gapcost, *seqs):
